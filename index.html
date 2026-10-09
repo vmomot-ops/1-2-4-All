@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>1–2–4–Все</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@400;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+html{-webkit-text-size-adjust:100%}
+body{margin:0}
+img{max-width:100%}
+
+/* Reference card: eyebrow → case → steps → question → facilitation → cautions */
+:root{
+  --bg:#F7F5F0; --surface:#FFFFFF; --surface-2:#EDE7DC;
+  --fg:#1C2B3A; --muted:#55616B; --line:#DED8CC;
+  --accent:#A84A1A; --teal:#2E6F7E;
+  --zone-go:#E2EDEF; --zone-hold:#F1EDE4; --zone-stop:#F6E5DB;
+  --serif:'Source Serif 4', Georgia, serif;
+  --sans:'IBM Plex Sans', system-ui, -apple-system, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --bg:#121C26; --surface:#1C2B3A; --surface-2:#24354A;
+  --fg:#F0EDE6; --muted:#9FAEBB; --line:#2F4256;
+  --accent:#E8995F; --teal:#78BAC7;
+  --zone-go:#1B3A43; --zone-hold:#2A3444; --zone-stop:#3B2619;
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --bg:#121C26; --surface:#1C2B3A; --surface-2:#24354A;
+  --fg:#F0EDE6; --muted:#9FAEBB; --line:#2F4256;
+  --accent:#E8995F; --teal:#78BAC7;
+  --zone-go:#1B3A43; --zone-hold:#2A3444; --zone-stop:#3B2619;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--fg); font-family:var(--sans); line-height:1.5;
+  padding-inline:20px; padding-block:40px 64px}
+.wrap{max-width:820px; margin:0 auto; display:flex; flex-direction:column; gap:40px}
+.wrap>*{min-width:0; max-width:100%}
+.eyebrow{font-size:13px; font-weight:600; letter-spacing:.11em; text-transform:uppercase; color:var(--accent); margin:0}
+h1{font-family:var(--serif); font-size:clamp(34px,7vw,48px); font-weight:600; line-height:1.1;
+  margin:10px 0 0; text-wrap:balance}
+.lead{font-family:var(--serif); font-size:clamp(20px,4vw,25px); line-height:1.35; margin:14px 0 0; color:var(--muted)}
+h2{font-size:13px; font-weight:600; letter-spacing:.11em; text-transform:uppercase;
+  color:var(--muted); margin:0 0 14px; padding-bottom:8px; border-bottom:1px solid var(--line)}
+h3{font-size:17px; font-weight:600; margin:0}
+p{margin:0}
+.intro{font-size:16px; line-height:1.55; margin-bottom:16px}
+.case{background:var(--surface-2); border-radius:12px; padding:22px;
+  display:flex; flex-direction:column; gap:11px}
+.case p{font-size:15.5px; line-height:1.55; color:var(--muted)}
+.case .pull{font-family:var(--serif); font-size:clamp(18px,3.4vw,21px); line-height:1.35; color:var(--fg)}
+.steps{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:14px}
+.step{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:18px 17px;
+  display:flex; flex-direction:column; gap:8px; min-width:0}
+.step .t{display:flex; align-items:baseline; gap:9px; flex-wrap:wrap}
+.step .dur{font-family:var(--serif); font-size:27px; font-weight:700; color:var(--accent); line-height:1}
+.step .mode{font-size:15px; font-weight:600}
+.step p{font-size:14.5px; color:var(--muted); line-height:1.45}
+.total{margin-top:16px; font-size:15.5px; line-height:1.55}
+ol{margin:0; padding-left:22px; display:flex; flex-direction:column; gap:10px; font-size:16px}
+ol li::marker{color:var(--accent); font-weight:700}
+.two{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:14px}
+.note{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:20px;
+  display:flex; flex-direction:column; gap:8px; min-width:0}
+.note .tag{font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase}
+.note p{font-size:15px; color:var(--muted); line-height:1.5}
+.note .quote{font-family:var(--serif); font-size:17px; line-height:1.35; color:var(--fg)}
+.sees .tag{color:var(--teal)} .blind .tag{color:var(--accent)}
+.check{margin-top:16px; font-size:15.5px; line-height:1.55}
+.forbo{border-left:4px solid var(--accent); background:var(--surface-2); border-radius:0 12px 12px 0;
+  padding:20px 22px; display:flex; flex-direction:column; gap:9px}
+.forbo .tag{font-size:12px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--accent)}
+.forbo p{font-size:16px; line-height:1.5}
+footer{font-size:13px; color:var(--muted); line-height:1.5; border-top:1px solid var(--line); padding-top:18px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Модуль I · Блок 2 · Фасилітація</p>
+  <h1>1–2–4–Все</h1>
+  <p class="lead">Як за чверть години почути всіх, а не трьох найгучніших</p>
+</header>
+
+<section>
+  <h2>Що вона лагодить</h2>
+  <div class="case">
+    <p>У звичайному обговоренні перший, хто заговорив, задає рамку. Далі половина кімнати вже не каже того, що думала до його репліки, а третина не каже нічого взагалі — і це не сором'язливість, це арифметика: на двадцять осіб і сорок хвилин припадає по дві хвилини на людину, і всі це розуміють.</p>
+    <p>1–2–4–Все перевертає порядок: спочатку думають усі й мовчки, потім ідеї проходять відбір у малих групах, і лише тоді звучать уголос. Відбір робить зміст, а не гучність.</p>
+    <p class="pull">Тиша на початку — не втрачений час. Це єдине, що робить решту чесною.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Чотири кроки</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="t"><span class="dur">1 хв</span><span class="mode">Наодинці</span></div>
+      <p>Кожен пише сам, мовчки. Ніхто ще нічого не почув — тому ніхто не підлаштувався. Єдиний момент, коли в кімнаті народжуються справді різні відповіді.</p>
+    </div>
+    <div class="step">
+      <div class="t"><span class="dur">2 хв</span><span class="mode">У парі</span></div>
+      <p>Переказуєте одне одному. Пара — найбезпечніший формат у світі: тут промовляють те, чого на двадцять осіб не сказали б ніколи.</p>
+    </div>
+    <div class="step">
+      <div class="t"><span class="dur">4 хв</span><span class="mode">У четвірці</span></div>
+      <p>Дві пари сходяться і <strong>обирають один</strong> сигнал, який винесуть. Вибір обов'язковий: без нього четвірка принесе чотири пункти, і загальне коло потоне.</p>
+    </div>
+    <div class="step">
+      <div class="t"><span class="dur">30 с</span><span class="mode">У загальне коло</span></div>
+      <p>Від групи, не від людини. Коротко, без преамбули «ми тут довго думали і дійшли висновку».</p>
+    </div>
+  </div>
+  <p class="total"><strong>7,5 хвилини чистого часу.</strong> З поясненням, переходами і розбором — п'ятнадцять. Менше не буває, більше не треба.</p>
+</section>
+
+<section>
+  <h2>Питання вирішує все</h2>
+  <p class="intro">Структура проста, і зіпсувати її можна рівно в одному місці — у формулюванні. Ось пара, яка показує різницю.</p>
+  <div class="two">
+    <div class="note blind">
+      <span class="tag">Так не питають</span>
+      <p class="quote">«Які у вас слабкі сигнали?»</p>
+      <p>Зал мовчатиме. Питання вимагає спершу визнати щось сигналом — тобто довести його важливість, ще не промовивши. Ніхто не хоче виявитися тим, хто притягнув дурницю.</p>
+    </div>
+    <div class="note sees">
+      <span class="tag">Так питають</span>
+      <p class="quote">«Що ви почули за останні три місяці від своїх членів і ще нікому не переказали?»</p>
+      <p>Планка знята. Переказати чуже можна без відповідальності за висновок — а «ще нікому не переказали» прямо дозволяє принести дрібницю.</p>
+    </div>
+  </div>
+  <p class="check"><strong>Правило:</strong> відповідь на питання має вже лежати в людини в голові. Якщо над ним треба думати з нуля, перша хвилина піде на паніку, а друга — на вибачення перед партнером.</p>
+</section>
+
+<section>
+  <h2>Що робить ведучий</h2>
+  <ol>
+    <li>Назвіть питання і залиште його на екрані або фліпчарті. Воно має бути перед очима всі сім хвилин — інакше до четвірки від нього залишиться переказ переказу.</li>
+    <li>Оголошуйте кожен перехід уголос і жорстко за часом: «хвилина минула, знаходимо пару».</li>
+    <li>Не ходіть між парами і не прислухайтесь. Присутність ведучого біля пари вбиває пару.</li>
+    <li>У загальному колі записуйте на фліпчарті <strong>дослівно</strong>, не переформульовуючи у звичні вам слова.</li>
+    <li>Відзначайте вголос збіги між різними галузями. Саме збіги — найцінніше, що буде у вправі.</li>
+    <li>Не коментуйте по ходу. Розбір — тільки після того, як висловилися всі четвірки.</li>
+  </ol>
+</section>
+
+<section>
+  <h2>Чим корисна і де ламається</h2>
+  <div class="two">
+    <div class="note sees">
+      <span class="tag">Бачить краще за інших</span>
+      <p>Вирівнює голоси. Після парного кроку говорять ті, хто в загальному колі не сказав би нічого, — і найчастіше саме в них найсвіжіше, бо вони не відтворюють торішню дискусію.</p>
+    </div>
+    <div class="note blind">
+      <span class="tag">Де ламається</span>
+      <p>Не витримує розтягування. Дайте парі не дві хвилини, а п'ять — і структура розсиплеться у звичайну розмову з тими самими трьома гучними. Жорсткий час тут не формальність, він і є метод.</p>
+    </div>
+  </div>
+</section>
+
+<div class="forbo">
+  <span class="tag">Для бізнес-об'єднання</span>
+  <p>Найцінніше тут не ідеї, а збіги. Коли харчовик і меблевик незалежно приносять ту саму скаргу на той самий орган, вона перестає бути приватною проблемою і стає порядком денним асоціації. Один член зі скаргою — це клієнт; троє з різних галузей — це предмет адвокації. Саме тому питання формулюють про те, що ви <em>почули від членів</em>, а не про те, що думаєте ви.</p>
+</div>
+
+<footer>
+  1–2–4–Все — базова структура з набору Liberating Structures Анрі Ліпмановича і Кіта Мак-Кендлесса, описаного в книжці «The Surprising Power of Liberating Structures» (2013); набір відкритий і вільний для використання. Хронометраж тут стандартний, формулювання питання і наголос на міжгалузевих збігах — адаптація під сесію бізнес-об'єднання.
+</footer>
+
+</div>
+</body>
+</html>
